@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paradise Bubble Bay Booking</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/booking.css" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+<body>
+
+   <!-- NAVBAR -->
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="logo-container">
+        <img src="images/logo.png" loading="lazy" alt="Logo" class="site-logo">
+        <h1 class="logo">Paradise Bubble Bay</h1>
+      </div>
+      <nav class="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Book Your Stay</h1>
+<form id="bookingForm">
+    <!-- User Details -->
+    <div class="section">
+      <label>Name: <input type="text" id="name" required></label><br>
+      <label>Email: <input type="email" id="email" required></label><br>
+      <label>Phone: <input type="tel" id="phone" required></label>
+    </div>
+
+    <!-- Date Selection -->
+    <div class="section">
+      <label>Check-in Date: <input type="date" id="checkin" required></label>
+      <label>Check-out Date: <input type="date" id="checkout" required></label>
+    </div>
+
+    <!-- Room Selection -->
+    <div class="section" id="roomSelection">
+      <h3>Select Room Type(s):</h3>
+
+      <!-- Suite Room -->
+      <label>
+        <input type="checkbox" name="roomType" value="suite" onchange="toggleRoomOptions(this)">
+        Suite Room (₹6000 weekday / ₹8000 weekend for 6 pax)
+      </label>
+      <div class="room-options" id="suiteOptions" style="display:none;">
+        No. of Rooms: 
+        <select id="suiteCount">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2 (max)</option>
+        </select>
+        Guests: <input type="number" id="suiteGuests" min="0" placeholder="Total guests">
+      </div>
+
+      <!-- Executive Room -->
+      <label>
+        <input type="checkbox" name="roomType" value="executive" onchange="toggleRoomOptions(this)">
+        Executive Room (₹3500 weekday / ₹4500 weekend for 4 pax)
+      </label>
+      <div class="room-options" id="executiveOptions" style="display:none;">
+        No. of Rooms: 
+        <select id="executiveCount">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6 (max)</option>
+        </select>
+        Guests: <input type="number" id="executiveGuests" min="0" placeholder="Total guests">
+      </div>
+
+      <!-- Standard Room -->
+      <label>
+        <input type="checkbox" name="roomType" value="standard" onchange="toggleRoomOptions(this)">
+        Standard Room (₹1800 weekday / ₹2500 weekend for 2 pax)
+      </label>
+      <div class="room-options" id="standardOptions" style="display:none;">
+        No. of Rooms: 
+        <select id="standardCount">
+          <option value="0">0</option>
+          <option value="1">1</option>
+        </select>
+        Guests: <input type="number" id="standardGuests" min="0" placeholder="Total guests">
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button id="checkPriceBtn">Check Price</button>
+
+
+    <!-- Price Display -->
+    <div class="section" id="priceDisplay" style="display:none;">
+      <h3>Booking Summary</h3>
+      <p>Total Amount: ₹<span id="totalAmount"></span></p>
+      <p>Advance (20%): ₹<span id="advanceAmount"></span></p>
+      <p>Pay at Hotel: ₹<span id="payAtHotel"></span></p>
+      <button id="proceedToPaymentBtn" style="display: none; margin-top: 20px;">Proceed to Payment</button>
+    </div>
+    </form>
+  </div>
+
+  <div id="closedDatesNotice" class="closed-dates-box" style="display: none;">
+    <h3>⚠️ Unavailable Dates</h3>
+    <ul id="closedDatesList"></ul>
+  </div>
+
+  <script src="scripts/booking.js"></script>
+</body>
+</html>
