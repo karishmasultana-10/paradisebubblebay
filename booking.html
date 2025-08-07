@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/booking.css" />
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
+  <script src="scripts/booking.js" defer></script>
 </head>
 <body>
 
@@ -20,10 +20,10 @@
       </div>
       <nav class="navbar">
         <ul class="nav-links">
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html" >Home</a></li>
           <li><a href="rooms.html">Rooms</a></li>
-          <li><a href="booking.html">Booking</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="booking.html" class="active">Booking</a></li>
+          
         </ul>
       </nav>
     </div>
@@ -59,7 +59,11 @@
         <select id="suiteCount">
           <option value="0">0</option>
           <option value="1">1</option>
-          <option value="2">2 (max)</option>
+          <option value="2">2 </option>
+          <option value="3">3 </option>
+          <option value="4">4 </option>
+          <option value="5">5 </option>
+          <option value="6">6 (max)</option>
         </select>
         Guests: <input type="number" id="suiteGuests" min="0" placeholder="Total guests">
       </div>
@@ -77,8 +81,7 @@
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6 (max)</option>
+          
         </select>
         Guests: <input type="number" id="executiveGuests" min="0" placeholder="Total guests">
       </div>
@@ -93,6 +96,7 @@
         <select id="standardCount">
           <option value="0">0</option>
           <option value="1">1</option>
+          <option value="2">2</option>
         </select>
         Guests: <input type="number" id="standardGuests" min="0" placeholder="Total guests">
       </div>
@@ -108,7 +112,9 @@
       <p>Total Amount: ₹<span id="totalAmount"></span></p>
       <p>Advance (20%): ₹<span id="advanceAmount"></span></p>
       <p>Pay at Hotel: ₹<span id="payAtHotel"></span></p>
-      <button id="proceedToPaymentBtn" style="display: none; margin-top: 20px;">Proceed to Payment</button>
+      <!-- <a id="proceedToPayBtn" class="btn disabled" style="pointer-events: none;">Proceed to Pay</a> -->
+<a href="payment.html" class="btn">Proceed to Pay</a>
+
     </div>
     </form>
   </div>
@@ -118,6 +124,6 @@
     <ul id="closedDatesList"></ul>
   </div>
 
-  <script src="scripts/booking.js"></script>
+  
 </body>
 </html>

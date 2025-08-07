@@ -10,14 +10,8 @@ function isWeekend(date) {
   return day === 0 || day === 6;
 }
 
-function toggleRoomOptions(checkbox) {
-  const value = checkbox.value;
-  const optionsDiv = document.getElementById(`${value}Options`);
-  optionsDiv.style.display = checkbox.checked ? "block" : "none";
-}
 
 function calculatePrice(event) {
-  // Prevent form from submitting
   if (event) event.preventDefault();
 
   const checkin = document.getElementById("checkin").value;
@@ -53,14 +47,20 @@ function calculatePrice(event) {
     return;
   }
 
-  if (suiteRooms + execRooms + stdRooms === 0 || suiteGuests + execGuests + stdGuests === 0) {
-    alert("❗ Please select at least one room and enter the number of guests.");
+  if ((suiteRooms + execRooms + stdRooms) === 0 || (suiteGuests + execGuests + stdGuests) === 0) {
+    alert("❗ Please select at least one room and enter number of guests.");
     return;
   }
 
+  // ---- Pricing Calculation ----
   let totalAmount = 0;
+  let totalExtraGuests = 0;
+  let totalExtraCharges = 0;
+  let nights = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
   let currentDate = new Date(start);
-  while (currentDate < end) {
+
+  // Calculate room base price
+  for (let i = 0; i < nights; i++) {
     const dayKey = isWeekend(currentDate) ? "weekend" : "weekday";
     totalAmount += suiteRooms * roomRates.suite[dayKey];
     totalAmount += execRooms * roomRates.executive[dayKey];
@@ -68,29 +68,76 @@ function calculatePrice(event) {
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
-  const totalGuests = suiteGuests + execGuests + stdGuests;
-  const allowedGuests = 
-    suiteRooms * roomRates.suite.capacity + 
-    execRooms * roomRates.executive.capacity + 
-    stdRooms * roomRates.standard.capacity;
+  // ---- Extra Guest Charges Recalculation ----
+  const roomTypes = [
+    {
+      name: "suite",
+      rooms: suiteRooms,
+      guests: suiteGuests,
+      capacity: roomRates.suite.capacity
+    },
+    {
+      name: "executive",
+      rooms: execRooms,
+      guests: execGuests,
+      capacity: roomRates.executive.capacity
+    },
+    {
+      name: "standard",
+      rooms: stdRooms,
+      guests: stdGuests,
+      capacity: roomRates.standard.capacity
+    }
+  ];
 
-  let extraGuests = 0;
-  if (totalGuests > allowedGuests) {
-    extraGuests = totalGuests - allowedGuests;
-    alert(`⚠️ Guest limit exceeded!
-You selected rooms for ${allowedGuests} guests, but entered ${totalGuests} guests.
-Extra guest charge (₹${roomRates.extraPerson} x ${extraGuests}) will be added.`);
-    totalAmount += extraGuests * roomRates.extraPerson;
+  roomTypes.forEach((type) => {
+    const allowedGuests = type.rooms * type.capacity;
+    const extraGuests = Math.max(0, type.guests - allowedGuests);
+    totalExtraGuests += extraGuests;
+    totalExtraCharges += extraGuests * roomRates.extraPerson;
+  });
+
+  // Add extra charges if any
+  if (totalExtraGuests > 0) {
+    alert(`⚠️ Extra guests detected!\nExtra guest charge (₹${roomRates.extraPerson} x ${totalExtraGuests}) will be added.`);
   }
 
+  totalAmount += totalExtraCharges;
+
+  // Final billing
   const advanceAmount = Math.round(totalAmount * 0.2);
   const remaining = totalAmount - advanceAmount;
 
+  // Update UI
   document.getElementById("totalAmount").innerText = totalAmount;
   document.getElementById("advanceAmount").innerText = advanceAmount;
   document.getElementById("payAtHotel").innerText = remaining;
   document.getElementById("priceDisplay").style.display = "block";
-  document.getElementById("proceedToPaymentBtn").style.display = "inline-block";
+
+  // Save to localStorage
+  const name = document.getElementById("name")?.value || "";
+  const email = document.getElementById("email")?.value || "";
+  const phone = document.getElementById("phone")?.value || "";
+
+  const bookingInfo = {
+    name,
+    email,
+    phone,
+    checkin,
+    checkout,
+    rooms: {
+      suite: { count: suiteRooms, guests: suiteGuests },
+      executive: { count: execRooms, guests: execGuests },
+      standard: { count: stdRooms, guests: stdGuests }
+    },
+    extraGuests: totalExtraGuests,
+    extraCharges: totalExtraCharges,
+    totalAmount,
+    advanceAmount,
+    remainingAmount: remaining
+  };
+
+  localStorage.setItem("bookingDetails", JSON.stringify(bookingInfo));
 }
 
 
@@ -125,3 +172,65 @@ document.addEventListener("DOMContentLoaded", displayClosedDates);
 document.getElementById("checkPriceBtn").addEventListener("click", function(e) {
   calculatePrice(e);
 });
+
+// ✅ Save user and booking details on clicking Proceed to Pay
+// document.querySelector(".btn").addEventListener("click", function () {
+//   const name = document.getElementById("name").value.trim();
+//   const email = document.getElementById("email").value.trim();
+//   const phone = document.getElementById("phone").value.trim();
+
+//   const checkin = document.getElementById("checkin").value;
+//   const checkout = document.getElementById("checkout").value;
+
+//   const suiteRooms = parseInt(document.getElementById("suiteCount").value) || 0;
+//   const suiteGuests = parseInt(document.getElementById("suiteGuests").value) || 0;
+
+//   const execRooms = parseInt(document.getElementById("executiveCount").value) || 0;
+//   const execGuests = parseInt(document.getElementById("executiveGuests").value) || 0;
+
+//   const stdRooms = parseInt(document.getElementById("standardCount").value) || 0;
+//   const stdGuests = parseInt(document.getElementById("standardGuests").value) || 0;
+
+//   const totalAmount = document.getElementById("totalAmount")?.textContent || 0;
+//   const advanceAmount = document.getElementById("advanceAmount")?.textContent || 0;
+//   const payAtHotel = document.getElementById("payAtHotel")?.textContent || 0;
+
+//   localStorage.setItem("bookingDetails", JSON.stringify({
+//     name,
+//     email,
+//     phone,
+//     checkin,
+//     checkout,
+//     suiteRooms,
+//     suiteGuests,
+//     execRooms,
+//     execGuests,
+//     stdRooms,
+//     stdGuests,
+//     totalAmount,
+//     advanceAmount,
+//     payAtHotel
+//   }));
+// });
+function toggleRoomOptions(checkbox) {
+  const value = checkbox.value;
+  const optionsDiv = document.getElementById(`${value}Options`);
+
+  if (!optionsDiv) {
+    console.error(`❌ Element with ID '${value}Options' not found`);
+    return;
+  }
+
+  if (checkbox.checked) {
+    optionsDiv.style.display = "block";
+  } else {
+    optionsDiv.style.display = "none";
+
+    // Reset the values
+    const roomInput = document.getElementById(`${value}Count`);
+    const guestInput = document.getElementById(`${value}Guests`);
+
+    if (roomInput) roomInput.value = "0";
+    if (guestInput) guestInput.value = "";
+  }
+}

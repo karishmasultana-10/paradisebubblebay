@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment – Paradise Bubble Bay</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="styles/payment.css" />
+  <script src="scripts/payment.js" defer></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Payment Summary</h1>
+
+    <div class="section" id="summary">
+      <p><strong>Name:</strong> <span id="name"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Phone:</strong> <span id="phone"></span></p>
+      <p><strong>Check-in:</strong> <span id="checkin"></span></p>
+      <p><strong>Check-out:</strong> <span id="checkout"></span></p>
+
+      <p><strong>Suite Rooms:</strong> <span id="suiteRooms"></span></p>
+      <p><strong>Suite Guests:</strong> <span id="suiteGuests"></span></p>
+      <p><strong>Executive Rooms:</strong> <span id="execRooms"></span></p>
+      <p><strong>Executive Guests:</strong> <span id="execGuests"></span></p>
+      <p><strong>Standard Rooms:</strong> <span id="stdRooms"></span></p>
+      <p><strong>Standard Guests:</strong> <span id="stdGuests"></span></p>
+
+      <div id="extraGuestsSection" style="display: none;">
+        <p><strong>Extra Guests:</strong> <span id="extraGuests"></span></p>
+      </div>
+
+      <p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+      <p><strong>Advance (20%):</strong> ₹<span id="advanceAmount"></span></p>
+      <p><strong>Pay at Hotel:</strong> ₹<span id="payAtHotel"></span></p>
+
+      <button id="payNowBtn">Pay Now</button>
+    </div>
+  </div>
+</body>
+</html>

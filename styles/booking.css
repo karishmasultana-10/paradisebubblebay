@@ -98,7 +98,7 @@ button:hover {
 
 #priceDisplay span {
   font-weight: bold;
-  color: #007acc;
+  color:#007acc ;
 }
 
 /* Responsive for mobile */
@@ -117,7 +117,7 @@ button:hover {
 
   h1{
     padding-top: 20px;
-    font-size: 29px;
+    font-size: 24px;
   }
 }
 
@@ -213,4 +213,32 @@ label {
   .closed-dates-box li {
     font-size: 13px;
   }
+}
+
+
+
+/* Style for the "Proceed to Pay" button */
+.btn {
+  display: inline-block;
+  background-color: #005c99; /* Green button */
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px; /* Adds space above the button */
+}
+
+.btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Optional: Add spacing below total price section if needed */
+#priceSummary {
+  margin-bottom: 30px;
 }
