@@ -94,7 +94,7 @@ function calculatePrice(event) {
     const allowedGuests = type.rooms * type.capacity;
     const extraGuests = Math.max(0, type.guests - allowedGuests);
     totalExtraGuests += extraGuests;
-    totalExtraCharges += extraGuests * roomRates.extraPerson;
+    totalExtraCharges += extraGuests * roomRates.extraPerson*suiteCount*nights;
   });
 
   // Add extra charges if any
@@ -234,3 +234,36 @@ function toggleRoomOptions(checkbox) {
     if (guestInput) guestInput.value = "";
   }
 }
+
+// Load closed dates from localStorage
+function getClosedDates() {
+    return JSON.parse(localStorage.getItem("closedDates")) || [];
+}
+
+// Disable closed dates in check-in and check-out
+function blockClosedDates() {
+    const checkInInput = document.getElementById("checkin");
+    const checkOutInput = document.getElementById("checkout");
+
+    const closedDates = getClosedDates();
+
+    // Add event listeners to validate on change
+    checkInInput.addEventListener("change", function () {
+        if (closedDates.includes(this.value)) {
+            alert("This check-in date is not available. Please choose another date.");
+            this.value = "";
+        }
+    });
+
+    checkOutInput.addEventListener("change", function () {
+        if (closedDates.includes(this.value)) {
+            alert("This check-out date is not available. Please choose another date.");
+            this.value = "";
+        }
+    });
+}
+
+// Call it when DOM is ready
+document.addEventListener("DOMContentLoaded", function () {
+    blockClosedDates();
+});

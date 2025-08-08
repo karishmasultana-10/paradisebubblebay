@@ -1,4 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fef8fb;
+  color: #333;
+  line-height: 1.6;
+}
 
 /* Style the main form */
 form {
@@ -11,13 +22,13 @@ form {
 }
 
 /* Headings */
-h1, h2 {
+.container  h2 {
   text-align: center;
   color: #2b3e50;
   margin-bottom: 30px;
 }
 
-h1{
+h2{
   padding-top: 20px;
 }
 /* Labels and inputs */
@@ -115,10 +126,10 @@ button:hover {
     padding: 12px 15px;
   }
 
-  h1{
+  /* h1{
     padding-top: 20px;
     font-size: 24px;
-  }
+  } */
 }
 
 label {

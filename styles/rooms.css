@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
   background-color: #fef8fb;
   color: #333;
   line-height: 1.6;
@@ -209,7 +209,7 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .header-container {
+  /* .header-container {
     flex-direction: column;
     gap: 10px;
     text-align: center;
@@ -217,7 +217,7 @@ footer {
 
   .logo {
     font-size: 24px;
-  }
+  } */
 
   .rooms-grid {
     gap: 20px;

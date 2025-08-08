@@ -11,6 +11,13 @@ body {
   color: #333;
   line-height: 1.6;
 }
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
 
  /* Header / Navbar */
   
@@ -133,7 +140,7 @@ body {
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .nav-links a {
@@ -869,3 +876,31 @@ body {
     height: 55vh;
   }
 }
+/* 
+.main-header,
+.header-container,
+.logo-container,
+.navbar,
+.nav-links,
+.nav-links li,
+.nav-links a {
+  all: unset;
+  display: revert;
+}
+
+.main-header {
+  background-color: #e662b1;
+  padding: 15px 0;
+  color: white;
+  position: relative;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+} */
