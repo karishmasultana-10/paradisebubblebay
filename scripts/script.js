@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   img.addEventListener("click", () => {
     modal.style.display = "flex";
-    modalImg.src = img.getAttribute("data-fullsrc") || img.src; // data-fullsrc = higher res
+    modalImg.src = img.getAttribute("data-fullsrc") || img.src; 
   });
 
 
@@ -73,17 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 const images = document.querySelectorAll(".image-carousel img");
 const lightbox = document.getElementById("lightbox");
@@ -118,10 +107,10 @@ nextBtn.addEventListener("click", () => {
   lightboxImg.src = images[currentIndex].src;
 });
 
-// Close on click outside image
 lightbox.addEventListener("click", (e) => {
   if (e.target === lightbox) {
     lightbox.style.display = "none";
   }
 });
+
 

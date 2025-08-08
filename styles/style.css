@@ -148,8 +148,6 @@ body {
   }
 }
 
-
-
 /* Hero Section */
 .hero {
   position: relative;
@@ -401,14 +399,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Reuse container for consistent padding */
-/* .container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 0 15px;
-} */
 
-/* ---------- Responsive Styling ---------- */
 /* --- Refined Mobile Styling --- */
 
 @media (max-width: 768px) {
@@ -450,7 +441,7 @@ body {
   .room-card:nth-child(3) {
     grid-column: 1 / span 2;
     justify-self: center;
-    width: 60%; /* narrower to look centered and proportional */
+    width: 60%; 
   }
 
   .room-card h3 {
@@ -582,9 +573,7 @@ body {
  
 }
 
-
 /* Location */
-
 #location {
   width: 90%; 
   max-width: 800px; 
@@ -626,6 +615,7 @@ body {
   margin-top: 10px !important;
   margin-bottom: 10px !important;
 }
+
 /* Tighter spacing between all sections on mobile */
 .about,
 .rooms-preview,
@@ -648,65 +638,62 @@ body {
 
 }
 
-
-
-
-  /* Footer */
-   footer {
-    background-color: #040505;
-    color: white;
-    padding: 20px;
-    margin-top: 30px;
-    border-top: 2px solid #00796b;
-    text-align: center
-  }
+/* Footer */
+footer {
+  background-color: #040505;
+  color: white;
+  padding: 20px;
+  margin-top: 30px;
+  border-top: 2px solid #00796b;
+  text-align: center
+}
   
-  .card.footer-contact {
-    text-align: center;
-  }
+.card.footer-contact {
+  text-align: center;
+}
 
-  footer .contact-info h4{
-    font-size: 22px;
-  }
+footer .contact-info h4{
+  font-size: 22px;
+}
   
-  footer .social-section {
-    margin-top: 20px;
-  }
+footer .social-section {
+  margin-top: 20px;
+}
   
-  footer .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 
-  }
+}
   
-  footer .footer-copyright {
-    margin-top: 30px;
-    font-size: 14px;
-    text-align: center;
-    color: white;
-  }
-  footer .social-section h2{
-    color: white;
-    font-size: 22px;
+footer .footer-copyright {
+  margin-top: 30px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+}
+footer .social-section h2{
+  color: white;
+  font-size: 22px;
 
-  }
+}
   
-  .social-icons img:hover {
-    transform: scale(1.1);
-  }
+.social-icons img:hover {
+  transform: scale(1.1);
+}
 
-  footer .social-icons img {
-    width: 28px; 
-    height: 28px;
-    transition: transform 0.3s ease;
-  }
+footer .social-icons img {
+  width: 28px; 
+  height: 28px;
+  transition: transform 0.3s ease;
+}
   
-  footer .social-icons img:hover {
-    transform: scale(1.15); 
-  }
+footer .social-icons img:hover {
+  transform: scale(1.15); 
+}
 
-  /* === Reduce vertical spacing between homepage sections === */
+/* === Reduce vertical spacing between homepage sections === */
 .about,
 .rooms-preview,
 .facilities,
@@ -876,31 +863,3 @@ body {
     height: 55vh;
   }
 }
-/* 
-.main-header,
-.header-container,
-.logo-container,
-.navbar,
-.nav-links,
-.nav-links li,
-.nav-links a {
-  all: unset;
-  display: revert;
-}
-
-.main-header {
-  background-color: #e662b1;
-  padding: 15px 0;
-  color: white;
-  position: relative;
-  z-index: 1000;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-} */

@@ -6,61 +6,10 @@
 }
 
 body {
-  /* font-family: 'Poppins', sans-serif; */
   background-color: #fef8fb;
   color: #333;
   line-height: 1.6;
 }
-
-/* Header */
-/* .main-header {
-  background-color: #db79b4;
-  padding: 15px 0;
-  color: white;
-}
-
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.site-logo {
-  height: 40px;
-  margin-right: 10px;
-}
-
-.logo {
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
-}
-
-.navbar .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.nav-links a:hover,
-.nav-links .active {
-  color: #fddde6;
-} */
 
 /* Room Section */
 .rooms-section {
@@ -82,7 +31,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* Room Cards (No Image) */
 .rooms-grid {
   display: flex;
   justify-content: center;
@@ -131,7 +79,6 @@ body {
   opacity: 0.8;
 }
 
-
 /* Room Details Box */
 .room-info {
   background: #fff7fa;
@@ -158,7 +105,6 @@ body {
   grid-template-columns: 1fr 1fr;
   list-style: none;
   padding: 0;
-  /* display: grid; */
   gap: 16px 30px;
 }
 
@@ -172,7 +118,7 @@ body {
 
 .room-info li {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping */
+  flex-wrap: wrap; 
   align-items: baseline;
   gap: 4px;
   font-size: 1rem;
@@ -198,7 +144,7 @@ body {
     margin-bottom: 1px;
   }
 }
-/* Footer (Simple) */
+/* Footer */
 footer {
   background-color: #111;
   color: #fff;
@@ -209,15 +155,6 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  /* .header-container {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .logo {
-    font-size: 24px;
-  } */
 
   .rooms-grid {
     gap: 20px;
@@ -298,7 +235,6 @@ footer {
   display: none;
 }
 
-
 .carousel-img {
   width: 100%;          
   max-width: 350px;     
@@ -370,7 +306,6 @@ footer {
   margin: 0 auto;
   filter: none;
 }
-
 
 .modal-overlay {
   background: none !important;
@@ -460,4 +395,24 @@ footer {
 
 .next-btn {
   right: 15px;
+}
+
+@media (max-width: 768px) {
+  .room-card:nth-child(3) {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  .room-card:nth-child(3) img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .room-card:nth-child(3) .room-details {
+    padding: 10px;
+    text-align: left;
+  }
 }

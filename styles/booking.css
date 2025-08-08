@@ -11,7 +11,6 @@ body {
   line-height: 1.6;
 }
 
-/* Style the main form */
 form {
   max-width: 850px;
   margin: 40px auto;
@@ -21,7 +20,6 @@ form {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-/* Headings */
 .container  h2 {
   text-align: center;
   color: #2b3e50;
@@ -31,7 +29,7 @@ form {
 h2{
   padding-top: 20px;
 }
-/* Labels and inputs */
+
 label {
   display: block;
   margin-bottom: 10px;
@@ -48,7 +46,7 @@ select {
   width: 100%;
   padding: 10px;
   margin-top: 4px;
-  margin-bottom: 10px; /* reduced spacing */
+  margin-bottom: 10px; 
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 15px;
@@ -126,15 +124,11 @@ button:hover {
     padding: 12px 15px;
   }
 
-  /* h1{
-    padding-top: 20px;
-    font-size: 24px;
-  } */
 }
 
 label {
   display: block;
-  margin-bottom: 4px; /* reduced from 10px */
+  margin-bottom: 4px; 
   font-weight: 500;
   color: #2e3d49;
 }
@@ -152,7 +146,7 @@ label {
   select {
     font-size: 14px;
     padding: 5px;
-    margin-bottom: 2px; /* tighter spacing */
+    margin-bottom: 2px; 
   }
 
   label {
@@ -226,12 +220,9 @@ label {
   }
 }
 
-
-
-/* Style for the "Proceed to Pay" button */
 .btn {
   display: inline-block;
-  background-color: #005c99; /* Green button */
+  background-color: #005c99; 
   color: white;
   padding: 12px 24px;
   font-size: 16px;
@@ -242,14 +233,13 @@ label {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 20px; /* Adds space above the button */
+  margin-top: 20px; 
 }
 
 .btn:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #1c80c3 ; 
 }
 
-/* Optional: Add spacing below total price section if needed */
 #priceSummary {
   margin-bottom: 30px;
 }

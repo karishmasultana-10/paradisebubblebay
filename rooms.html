@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rooms – Paradise Bubble Bay</title>
   <link rel="stylesheet" href="styles/rooms.css" />
   <link rel="stylesheet" href="styles/style.css" />
   <script src="scripts/script.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="scripts/booking.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -24,7 +24,6 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="rooms.html" class="active">Rooms</a></li>
           <li><a href="booking.html">Booking</a></li>
-         
         </ul>
       </nav>
     </div>
@@ -33,89 +32,86 @@
   <!-- Rooms Info -->
   <section class="rooms-section">
     <h2>Our Rooms</h2>
-    <p class="intro">Choose from our comfortable and spacious accommodations, designed to suit your group size and stay preferences.</p>
+    <p class="intro">
+      Choose from our comfortable and spacious accommodations, designed to suit your group size and stay preferences.
+    </p>
 
     <div class="rooms-grid">
       <!-- Suite Room -->
       <div class="room-card">
-        
         <h3>Suite Room</h3>
-           <span class="room-count">(2 Rooms)</span>
-
+        <span class="room-count">(2 Rooms)</span>
         <p><strong>Capacity:</strong> 5–6 Guests</p>
         <p><strong>Weekday:</strong> ₹6000<br><strong>Weekend:</strong> ₹8000</p>
         <p>Perfect for families and larger groups.</p>
+        <button class="book-now-btn" data-room="suite">Book Now</button>
       </div>
 
       <!-- Executive Room -->
       <div class="room-card">
-        
-        <h3>Executive Room </h3>
+        <h3>Executive Room</h3>
         <span class="room-count">(6 Rooms)</span>
         <p><strong>Capacity:</strong> 3–4 Guests</p>
         <p><strong>Weekday:</strong> ₹3500<br><strong>Weekend:</strong> ₹4500</p>
         <p>Spacious and stylish rooms for a relaxing stay.</p>
+        <button class="book-now-btn" data-room="executive">Book Now</button>
       </div>
 
       <!-- Standard Room -->
       <div class="room-card">
-        
-        <h3>Standard Room </h3>
+        <h3>Standard Room</h3>
         <span class="room-count">(1 Room)</span>
         <p><strong>Capacity:</strong> 2 Guests</p>
         <p><strong>Weekday:</strong> ₹1800<br><strong>Weekend:</strong> ₹2500</p>
         <p>Cozy room, ideal for couples or solo travelers.</p>
+        <button class="book-now-btn" data-room="standard">Book Now</button>
       </div>
     </div>
 
     <!-- Additional Info -->
-   <div class="room-info">
-  <h3>Additional Information</h3>
-  <ul>
-    
-    <li><strong>Check-in:</strong> 12:00 PM</li>
-    <li><strong>Check-out:</strong> 11:00 AM</li>
-    <li><strong>Extra Person Charge:</strong> ₹1000 per head</li>
-    <li><strong>Inclusions:</strong> Swimming Pool Access</li>
-    <li><strong>Note:</strong> Only breakfast is complimentary</li>
-  </ul>
-</div>
-
+    <div class="room-info">
+      <h3>Additional Information</h3>
+      <ul>
+        <li><strong>Check-in:</strong> 12:00 PM</li>
+        <li><strong>Check-out:</strong> 11:00 AM</li>
+        <li><strong>Extra Person Charge:</strong> ₹1000 per head</li>
+        <li><strong>Inclusions:</strong> Swimming Pool Access</li>
+        <li><strong>Note:</strong> Only breakfast is complimentary</li>
+      </ul>
+    </div>
   </section>
-      <!-- Gallery Section -->
-    <section class="gallery-section">
-      <h2 class="gallery-title">Rooms Gallery</h2>
-      <div class="carousel-wrapper">
-        <button class="carousel-btn left" id="prevBtn">&#10094;</button>
-        <div class="carousel" id="carousel">
-          <img src="images/3.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/4.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/6.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/7.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/8.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/10.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/18.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/24.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/5.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/15.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/21.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/22.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <img src="images/23.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
-          <!-- <img src="images/9.jpg" loading="lazy"class="carousel-img" alt="Gallery Image" /> -->
-        </div>
-        <button class="carousel-btn right" id="nextBtn">&#10095;</button>
-      </div>
 
-      <!-- Modal -->
-      <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImg" />
-        <button class="modal-nav prev">&#10094;</button>
-        <button class="modal-nav next">&#10095;</button>
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <h2 class="gallery-title">Rooms Gallery</h2>
+    <div class="carousel-wrapper">
+      <button class="carousel-btn left" id="prevBtn">&#10094;</button>
+      <div class="carousel" id="carousel">
+        <img src="images/3.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/4.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/6.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/7.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/8.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/10.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/18.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/24.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/5.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/15.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/21.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/22.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
+        <img src="images/23.jpg" loading="lazy" class="carousel-img" alt="Gallery Image" />
       </div>
-    </section>
-  </main>
+      <button class="carousel-btn right" id="nextBtn">&#10095;</button>
+    </div>
 
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImg" />
+      <button class="modal-nav prev">&#10094;</button>
+      <button class="modal-nav next">&#10095;</button>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer>
@@ -125,5 +121,14 @@
     <a href="admin.html" style="font-size: 12px; color: gray;">Admin Panel</a>
   </footer>
 
+  <script>
+    document.querySelectorAll(".book-now-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const roomType = btn.getAttribute("data-room");
+        localStorage.setItem("selectedRoom", roomType);
+        window.location.href = "booking.html";
+      });
+    });
+  </script>
 </body>
 </html>
