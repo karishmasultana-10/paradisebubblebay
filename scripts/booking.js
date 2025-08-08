@@ -11,7 +11,7 @@ const roomRates = {
  * @returns {boolean} - True if the date is a weekend, otherwise false.
  */
 function isWeekend(date) {
-  const day = date.getDay(); // 0 is Sunday, 6 is Saturday
+  const day = date.getDay();
   return day === 0 || day === 6;
 }
 
@@ -26,7 +26,7 @@ function calculatePrice(event) {
   console.clear();
   console.log("--- Starting New Price Calculation (Weekend Priority Rule) ---");
 
-  // --- 1. GET ALL INPUT VALUES ---
+
   const checkinStr = document.getElementById("checkin").value;
   const checkoutStr = document.getElementById("checkout").value;
 
@@ -37,7 +37,7 @@ function calculatePrice(event) {
   const stdRooms = parseInt(document.getElementById("standardCount").value) || 0;
   const stdGuests = parseInt(document.getElementById("standardGuests").value) || 0;
 
-  // --- 2. VALIDATE INPUTS ---
+
   if (!checkinStr || !checkoutStr) {
     alert("❗ Please select both check-in and check-out dates.");
     return;
@@ -61,32 +61,30 @@ function calculatePrice(event) {
     return;
   }
 
-  // --- 3. DETERMINE WHICH RATE TO USE FOR THE ENTIRE STAY ---
+
   let containsWeekend = false;
   let currentDateForCheck = new Date(start);
 
-  // Loop through the dates just to see if a weekend day exists.
+
   while (currentDateForCheck < end) {
     if (isWeekend(currentDateForCheck)) {
       containsWeekend = true;
-      break; // Found a weekend, we can stop checking.
+      break; 
     }
     currentDateForCheck.setDate(currentDateForCheck.getDate() + 1);
   }
 
-  // The priceKey will be 'weekend' if containsWeekend is true, otherwise 'weekday'.
+  
   const priceKey = containsWeekend ? "weekend" : "weekday";
 
   console.log(`Booking Period: ${start.toDateString()} to ${end.toDateString()}`);
   console.log(`Does this booking contain a weekend day? ${containsWeekend}`);
   console.log(`Therefore, applying '${priceKey.toUpperCase()}' rates to ALL nights.`);
 
-  // --- 4. CALCULATE TOTAL PRICE USING THE DETERMINED RATE ---
-  // Calculate the total number of nights.
   const nights = Math.round((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
 
   if (nights <= 0) {
-      // This case should be rare due to validation, but it's good practice.
+    
       return; 
   }
 
@@ -103,7 +101,6 @@ function calculatePrice(event) {
   console.log(`Rate per night (using ${priceKey} price): ₹${dailyRate}`);
   console.log(`Total Base Room Cost: ₹${baseRoomCost}`);
 
-  // --- 5. EXTRA GUEST CALCULATION ---
   let totalExtraGuests = 0;
   const roomTypes = [
     { rooms: suiteRooms, guests: suiteGuests, capacity: roomRates.suite.capacity },
@@ -125,7 +122,6 @@ function calculatePrice(event) {
     alert(`⚠️ Extra guests detected!\nExtra guest charge of ₹${totalExtraCharges} (₹${roomRates.extraPerson} x ${totalExtraGuests} guests x ${nights} nights) will be added.`);
   }
 
-  // --- 6. FINAL CALCULATION AND DISPLAY ---
   const totalAmount = baseRoomCost + totalExtraCharges;
   const advanceAmount = Math.round(totalAmount * 0.2);
   const remaining = totalAmount - advanceAmount;
@@ -135,7 +131,6 @@ function calculatePrice(event) {
   document.getElementById("payAtHotel").innerText = remaining;
   document.getElementById("priceDisplay").style.display = "block";
   
-  // --- 7. SAVE TO LOCAL STORAGE ---
   const name = document.getElementById("name")?.value || "";
   const email = document.getElementById("email")?.value || "";
   const phone = document.getElementById("phone")?.value || "";
