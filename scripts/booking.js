@@ -7,8 +7,8 @@ const roomRates = {
 
 /**
  * Checks if a given date is a weekend (Saturday or Sunday).
- * @param {Date} date - The date object to check.
- * @returns {boolean} - True if the date is a weekend, otherwise false.
+ * @param {Date} date 
+ * @returns {boolean} 
  */
 function isWeekend(date) {
   const day = date.getDay();
@@ -18,7 +18,7 @@ function isWeekend(date) {
 /**
  * Calculates the total price of a hotel stay.
  * If ANY day in the stay is a weekend, the weekend rate is applied to ALL nights.
- * @param {Event} event - The click event from the button.
+ * @param {Event} event 
  */
 function calculatePrice(event) {
   if (event) event.preventDefault();
@@ -38,6 +38,7 @@ function calculatePrice(event) {
   const stdGuests = parseInt(document.getElementById("standardGuests").value) || 0;
 
 
+  // --- VALIDATION CHECKS ---
   if (!checkinStr || !checkoutStr) {
     alert("❗ Please select both check-in and check-out dates.");
     return;
@@ -61,6 +62,20 @@ function calculatePrice(event) {
     return;
   }
 
+  // **NEW**: Check for guests if rooms of a certain type are selected
+  if (suiteRooms > 0 && suiteGuests === 0) {
+    alert("❗ You've selected a Suite room. Please enter the number of guests.");
+    return;
+  }
+  if (execRooms > 0 && execGuests === 0) {
+    alert("❗ You've selected an Executive room. Please enter the number of guests.");
+    return;
+  }
+  if (stdRooms > 0 && stdGuests === 0) {
+    alert("❗ You've selected a Standard room. Please enter the number of guests.");
+    return;
+  }
+  
 
   let containsWeekend = false;
   let currentDateForCheck = new Date(start);
@@ -69,12 +84,12 @@ function calculatePrice(event) {
   while (currentDateForCheck < end) {
     if (isWeekend(currentDateForCheck)) {
       containsWeekend = true;
-      break; 
+      break;
     }
     currentDateForCheck.setDate(currentDateForCheck.getDate() + 1);
   }
 
-  
+
   const priceKey = containsWeekend ? "weekend" : "weekday";
 
   console.log(`Booking Period: ${start.toDateString()} to ${end.toDateString()}`);
@@ -84,8 +99,8 @@ function calculatePrice(event) {
   const nights = Math.round((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
 
   if (nights <= 0) {
-    
-      return; 
+
+      return;
   }
 
   // Get the single daily rate based on the priceKey.
@@ -93,10 +108,10 @@ function calculatePrice(event) {
   dailyRate += suiteRooms * roomRates.suite[priceKey];
   dailyRate += execRooms * roomRates.executive[priceKey];
   dailyRate += stdRooms * roomRates.standard[priceKey];
-  
+
   // Calculate the total base cost.
   const baseRoomCost = dailyRate * nights;
-  
+
   console.log(`Total Nights: ${nights}`);
   console.log(`Rate per night (using ${priceKey} price): ₹${dailyRate}`);
   console.log(`Total Base Room Cost: ₹${baseRoomCost}`);
@@ -130,7 +145,7 @@ function calculatePrice(event) {
   document.getElementById("advanceAmount").innerText = advanceAmount;
   document.getElementById("payAtHotel").innerText = remaining;
   document.getElementById("priceDisplay").style.display = "block";
-  
+
   const name = document.getElementById("name")?.value || "";
   const email = document.getElementById("email")?.value || "";
   const phone = document.getElementById("phone")?.value || "";
